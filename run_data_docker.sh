@@ -17,7 +17,7 @@ fi
 
 if (($PYTHON==2 || $PYTHON==3))
 then
-	docker run -d -p 8888:8888 -v $FOLDER:/home/datadocker datadocker_image_python_$PYTHON;
+	docker run -d -p 127.0.0.1:8888:8888 -v $FOLDER:/home/datadocker datadocker_image_python_$PYTHON;
 else
 	echo "The argument supplied should be a valid Python version, 2 or 3";
   exit 128;

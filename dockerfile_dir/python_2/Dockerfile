@@ -60,10 +60,9 @@ VOLUME /home/datadocker
 WORKDIR /home/datadocker
 
 # Add the running script
-ADD /command/run.sh /home/datadocker/.run.sh
-
+ADD /command/run.sh /root/run.sh
 # Export port 8888
 EXPOSE 8888
 
 # Run jupyter
-CMD ["/home/datadocker/.run.sh"]
+CMD ["/root/run.sh"]
