@@ -1,0 +1,34 @@
+# Math/Stats/Machine Learning libraries
+numpy
+scipy
+statsmodels
+pandas
+ibis
+scikit-learn
+theano
+mahotas
+
+# NLP libraries
+nltk
+gensim
+
+# Jupyter libraries
+jupyter
+pyzmq
+
+# Plot libraries
+matplotlib
+altair
+vega
+seaborn
+bokeh
+pygal
+
+# Scraping libraries
+beautifulsoup4
+scrapy
+
+# Others
+rpy2
+sympy
+networkx
