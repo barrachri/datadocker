@@ -62,8 +62,11 @@ RUN mkdir /home/datadocker
 VOLUME /home/datadocker
 WORKDIR /home/datadocker
 
+# Add the running script
+ADD /command/run.sh /home/datadocker/.run.sh
+
 # Export port 8888
 EXPOSE 8888
 
 # Run jupyter
-CMD ["jupyter-notebook", "--no-browser", "--port=8888", "--ip=0.0.0.0"]
+CMD ["/home/datadocker/.run.sh"]
