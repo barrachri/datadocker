@@ -61,6 +61,8 @@ WORKDIR /home/datadocker
 
 # Add the running script
 ADD /command/run.sh /root/run.sh
+RUN chmod +x /root/run.sh
+
 # Export port 8888
 EXPOSE 8888
 
