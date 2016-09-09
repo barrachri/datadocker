@@ -3,6 +3,7 @@ numpy
 scipy
 statsmodels
 pandas
+pandas_datareader
 ibis
 scikit-learn
 theano
@@ -34,3 +35,4 @@ scrapy
 rpy2
 sympy
 networkx
+
