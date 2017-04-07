@@ -10,10 +10,8 @@ __./build_data_docker.sh__ $PYTHON_VERSION
 * $PYTHON_VERSION is the PYTHON_VERSION of your image, must must 2 or 3
 
 ## Command to run the CONTAINER
-__./run_data_docker.sh__ $LOCAL_FOLDER_NAME $PYTHON_VERSION
 
-* $LOCAL_FOLDER_NAME is the path to the directory that you want to mount with "/home/datadocker" inside your container
-* $PYTHON_VERSION, as above
+docker run -it --rm -p 8888:8888 -v YourFolder:/home/datadocker datadocker_python_YourPythonVersion
 
 You can see the running container with
 * sudo docker ps
