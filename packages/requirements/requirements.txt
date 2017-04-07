@@ -18,6 +18,7 @@ gensim
 # Jupyter libraries
 jupyter
 pyzmq
+jupyterlab
 
 # Plot libraries
 matplotlib
@@ -26,6 +27,7 @@ vega
 seaborn
 bokeh
 pygal
+plotly
 
 # Scraping libraries
 beautifulsoup4

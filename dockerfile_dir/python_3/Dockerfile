@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 
 # base image
-# https://hub.docker.com/r/phusion/baseimage/
-FROM phusion/baseimage
+# https://hub.docker.com/_/ubuntu/
+FROM ubuntu:16.04
 
 # Export env settings
-ENV LANG=en_US.UTF-8
+RUN locale-gen en_US.UTF-8  
+ENV LANG en_US.UTF-8 
+ENV LANGUAGE en_US:en 
+ENV LC_ALL en_US.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Export spark settings
@@ -14,6 +17,9 @@ ENV PATH=${SPARK_HOME}/bin:$PATH
 ENV PYSPARK_DRIVER_PYTHON=ipython
 ENV PYTHONPATH=${SPARK_HOME}/python/:$PYTHONPATH
 ENV PYTHONPATH=${SPARK_HOME}/python/lib/py4j-0.10.1-src.zip:$PYTHONPATH
+
+RUN apt-get update && \
+    apt-get -y install software-properties-common python-software-properties
 
 # Install Java
 RUN add-apt-repository --yes ppa:webupd8team/java
@@ -43,6 +49,7 @@ RUN cp /usr/bin/python3 /usr/bin/python
 
 # Install python packages
 ADD /packages/requirements/ /tmp/requirements
+RUN pip3 install -U pip
 RUN pip3 --no-cache-dir install -r /tmp/requirements/requirements.txt
 
 #setup R configs and install R packages
@@ -54,8 +61,7 @@ RUN Rscript -e "devtools::install_github('IRkernel/IRkernel')"
 RUN Rscript -e "IRkernel::installspec()"
 
 # Install and enable vega for Altair
-RUN jupyter nbextension install --py vega
-RUN jupyter nbextension enable vega --py --sys-prefix
+RUN jupyter serverextension enable --py jupyterlab --sys-prefix
 
 # Create new folders and set a workdir
 RUN mkdir /home/datadocker
